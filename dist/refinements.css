@@ -1,0 +1,16 @@
+/* Keep the reveal control in reach while the host presents lower match cards. */
+.floating-draw{position:fixed;right:28px;bottom:25px;z-index:20;display:flex;align-items:center;gap:24px;padding:15px 20px;background:#d5b370;color:#152018;border:1px solid #f0d59b;box-shadow:0 12px 35px rgba(0,0,0,.46);font:900 18px 'Barlow Condensed',sans-serif;letter-spacing:.08em;transform:translateY(130%);opacity:0;pointer-events:none;transition:transform .25s,opacity .25s,filter .2s}
+.floating-draw.visible{transform:translateY(0);opacity:1;pointer-events:auto}
+.floating-draw:hover:not(:disabled){filter:brightness(1.1)}
+.floating-draw:disabled{opacity:.6;cursor:default}
+.floating-draw.completed{display:none}
+.floating-draw strong{font-size:15px;white-space:nowrap;border-left:1px solid #8e7445;padding-left:16px}
+.hero{min-height:385px}
+.hero-inner{padding-top:42px;padding-bottom:42px}
+.hero h1{font-size:clamp(59px,6vw,96px)}
+.hero-insignia{width:195px;height:195px}
+.insignia-ring span{font-size:88px}
+.command-deck{margin-top:22px}
+@media(max-width:760px){.hero{min-height:0}.hero-inner{padding-top:45px;padding-bottom:40px}.hero h1{font-size:clamp(53px,11vw,78px)}.floating-draw{left:16px;right:16px;bottom:14px;justify-content:space-between;padding:15px;font-size:17px}.site-footer{padding-bottom:95px}}
+@media(max-width:470px){.hero h1{font-size:53px}.floating-draw{font-size:15px}.floating-draw strong{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.floating-draw{transition:none}}
