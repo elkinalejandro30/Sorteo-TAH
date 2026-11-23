@@ -1,14 +1,27 @@
-const ALLIANCES = [
-  'Morior Invictvs', 'Sturmtruppen.', 'Orden Ashura', 'K I N G S',
-  'Gens Una Sumus', 'Pura Vida', 'Guardia Nocturna', 'Los Guerreros Aguila',
-  'Quiencomodios', 'Mort Imperium', 'El Toro y el Águila', 'Grupo de Operaciones Maldito',
-  'HispanoRomano', 'The Golden Prophecy', 'Comando Wisky', 'The Raptors Supremacy',
-  'La Maldad', 'Schutztafell', 'AETT Blar', 'Conquistadores Final del Mundo',
-  'EuropaVII', 'Gremio Guardianes', 'Cinzas da Guerra', 'P4ct0 de Ac3ro',
-  'Primera Guardia', 'Brindemos', 'GEM', 'Asylum', 'Madhouse',
-  'Diosconmigoquiencontrami (2)', 'Pura Vida (2)', 'K I N G S (2)'
+// Winners from TAH 01–16, ordered by their previous match number.
+const QUALIFIED = [
+  {tah: '01', gid: '10948268', name: 'EuropaVII'},
+  {tah: '02', gid: '10945257', name: 'Los Guerreros Aguila'},
+  {tah: '03', gid: '10944141', name: 'Sturmtruppen'},
+  {tah: '04', gid: '10946169', name: 'The Golden Prophecy'},
+  {tah: '05', gid: '10942318', name: 'Mort Imperium'},
+  {tah: '06', gid: '10946039', name: 'AETT Blar'},
+  {tah: '07', gid: '10944358', name: 'Pura Vida 2'},
+  {tah: '08', gid: '10940766', name: 'Guardia Nocturna'},
+  {tah: '09', gid: '10945005', name: 'Grupo de Operaciones Maldito II'},
+  {tah: '10', gid: '10945039', name: 'K I N G S 2'},
+  {tah: '11', gid: '10945961', name: 'The Raptors Supremacy'},
+  {tah: '12', gid: '10944912', name: 'Sturmtruppen 2'},
+  {tah: '13', gid: '10944214', name: 'Orden Ashura'},
+  {tah: '14', gid: '10944071', name: 'GEM'},
+  {tah: '15', gid: '10944086', name: 'Asylum'},
+  {tah: '16', gid: '10945872', name: 'Pura Vida'}
 ];
-const STORAGE_KEY = 'batallon-supremacy-sorteo-alianzas-v1';
+const ALLIANCES = QUALIFIED.map(({name}) => name);
+const TOTAL_MATCHES = ALLIANCES.length / 2;
+const MATCHES_PER_FRONT = TOTAL_MATCHES / 2;
+// A new key prevents the completed 32-team draw from being read as this round.
+const STORAGE_KEY = 'batallon-supremacy-sorteo-octavos-v1';
 const $ = (selector) => document.querySelector(selector);
 let picks = loadPicks();
 let drawing = false;
@@ -48,8 +61,8 @@ function matchMarkup(matchIndex) {
 }
 
 function render() {
-  $('#frontA').innerHTML = Array.from({length: 8}, (_, i) => matchMarkup(i)).join('');
-  $('#frontB').innerHTML = Array.from({length: 8}, (_, i) => matchMarkup(i + 8)).join('');
+  $('#frontA').innerHTML = Array.from({length: MATCHES_PER_FRONT}, (_, i) => matchMarkup(i)).join('');
+  $('#frontB').innerHTML = Array.from({length: MATCHES_PER_FRONT}, (_, i) => matchMarkup(i + MATCHES_PER_FRONT)).join('');
   $('#drawCount').textContent = String(picks.length).padStart(2, '0');
   $('#remainingCount').textContent = `${ALLIANCES.length - picks.length} ${ALLIANCES.length - picks.length === 1 ? 'alianza pendiente' : 'alianzas pendientes'}`;
   $('#progressPercent').textContent = `${Math.round(picks.length / ALLIANCES.length * 100)}%`;
@@ -67,10 +80,10 @@ function render() {
   const done = picks.length === ALLIANCES.length;
   $('#drawButton').disabled = done || drawing;
   $('#floatingDrawButton').disabled = done || drawing;
-  $('#floatingCount').textContent = `${String(picks.length).padStart(2, '0')} / 32`;
+  $('#floatingCount').textContent = `${String(picks.length).padStart(2, '0')} / ${ALLIANCES.length}`;
   $('#floatingDrawButton').classList.toggle('completed', done);
   $('#drawButtonText').textContent = done ? 'SORTEO COMPLETADO' : drawing ? 'SORTEANDO...' : 'REVELAR ALIANZA';
-  $('#instruction').textContent = done ? 'Los 16 enfrentamientos están definidos. ¡Que comience la batalla!' : picks.length === 0 ? 'Presiona el botón para revelar la primera alianza.' : picks.length % 2 === 1 ? `Presiona de nuevo para descubrir el rival del combate ${String(Math.ceil(picks.length / 2)).padStart(2, '0')}.` : `Combate ${String(picks.length / 2).padStart(2, '0')} definido. Revela la siguiente alianza.`;
+  $('#instruction').textContent = done ? `Los ${TOTAL_MATCHES} enfrentamientos están definidos. ¡Que comience la batalla!` : picks.length === 0 ? 'Presiona el botón para revelar la primera alianza.' : picks.length % 2 === 1 ? `Presiona de nuevo para descubrir el rival del combate ${String(Math.ceil(picks.length / 2)).padStart(2, '0')}.` : `Combate ${String(picks.length / 2).padStart(2, '0')} definido. Revela la siguiente alianza.`;
 }
 
 function draw() {
@@ -93,7 +106,7 @@ function draw() {
   }, delay);
 }
 
-$('#rosterList').innerHTML = ALLIANCES.map(name => `<li>${name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</li>`).join('');
+$('#rosterList').innerHTML = QUALIFIED.map(({tah, gid, name}) => `<li><span class="roster-source" title="GID ${gid}">TAH ${tah}</span> ${name.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</li>`).join('');
 $('#drawButton').addEventListener('click', draw);
 $('#floatingDrawButton').addEventListener('click', draw);
 new IntersectionObserver(([entry]) => {

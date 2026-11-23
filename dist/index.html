@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101713">
-  <meta name="description" content="Sorteo en vivo de los dieciseisavos de final del Torneo de Alianzas Hispanas de Batallón Supremacy.">
-  <title>Sorteo de Alianzas · Batallón Supremacy</title>
+  <meta name="description" content="Sorteo en vivo de octavos de final del Torneo de Alianzas Hispanas de Batallón Supremacy, entre las 16 alianzas clasificadas.">
+  <title>Sorteo de octavos · Batallón Supremacy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,12 +29,12 @@
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-pattern" aria-hidden="true"></div>
         <div class="hero-inner">
-          <div class="hero-kicker"><span class="kicker-line"></span> OPERACIÓN 01 / EMPAREJAMIENTOS</div>
+          <div class="hero-kicker"><span class="kicker-line"></span> OPERACIÓN 02 / EMPAREJAMIENTOS</div>
           <h1 id="page-title">EL DESTINO<br><em>SE DECIDE AQUÍ.</em></h1>
-          <p>32 alianzas. 16 enfrentamientos. Un solo camino hacia la gloria. Revela a cada rival, uno por uno, en el sorteo de dieciseisavos de final.</p>
-          <div class="hero-meta"><span>SUPREMACY 1914</span><span class="meta-separator">✦</span><span>ELIMINATORIA DIRECTA</span><span class="meta-separator">✦</span><span>16 AVOS DE FINAL</span></div>
+          <p>16 alianzas ganadoras. 8 enfrentamientos. Un solo camino hacia la gloria. Revela a cada rival, uno por uno, en el sorteo de octavos de final.</p>
+          <div class="hero-meta"><span>SUPREMACY 1914</span><span class="meta-separator">✦</span><span>ELIMINATORIA DIRECTA</span><span class="meta-separator">✦</span><span>OCTAVOS DE FINAL</span></div>
         </div>
-        <div class="hero-insignia" aria-hidden="true"><div class="insignia-ring"><span>16</span><small>AVOS</small></div></div>
+        <div class="hero-insignia" aria-hidden="true"><div class="insignia-ring"><span>8</span><small>AVOS</small></div></div>
       </section>
 
       <section class="command-deck" aria-label="Panel del sorteo">
@@ -42,7 +42,7 @@
           <div class="section-overline">PANEL DE MANDO <span>／ SORTEO EN VIVO</span></div>
           <div class="command-title-row">
             <div><h2>El próximo nombre<br><span>cambia el cuadro.</span></h2><p id="instruction">Presiona el botón para revelar la primera alianza.</p></div>
-            <div class="draw-counter"><strong id="drawCount">00</strong><span>/ 32<br>REVELADAS</span></div>
+            <div class="draw-counter"><strong id="drawCount">00</strong><span>/ 16<br>REVELADAS</span></div>
           </div>
           <button class="draw-button" id="drawButton" type="button"><span class="draw-button-icon" aria-hidden="true">✦</span><span id="drawButtonText">REVELAR ALIANZA</span><span class="button-arrow" aria-hidden="true">→</span></button>
           <p class="save-note"><span aria-hidden="true">◉</span> El avance se guarda automáticamente en este navegador.</p>
@@ -52,26 +52,26 @@
           <div class="latest-result" id="latestResult" aria-live="polite"><span class="latest-placeholder">AÚN SIN REVELAR</span></div>
           <div class="side-divider"></div>
           <div class="progress-head"><span>PROGRESO DEL SORTEO</span><strong id="progressPercent">0%</strong></div>
-          <div class="progress-track" role="progressbar" aria-label="Progreso del sorteo" aria-valuemin="0" aria-valuemax="32" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
-          <div class="side-bottom"><span id="remainingCount">32 alianzas pendientes</span><span>16 COMBATES</span></div>
+          <div class="progress-track" role="progressbar" aria-label="Progreso del sorteo" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" id="progressBar"><span id="progressFill"></span></div>
+          <div class="side-bottom"><span id="remainingCount">16 alianzas pendientes</span><span>8 COMBATES</span></div>
         </div>
       </section>
 
       <section class="bracket-section" aria-labelledby="bracket-title">
-        <div class="section-heading"><div><div class="section-overline">EL CAMINO A LA VICTORIA <span>／ FASE 01</span></div><h2 id="bracket-title">DIECISEISAVOS <span>DE FINAL</span></h2></div><span class="heading-accent" aria-hidden="true">✦</span></div>
-        <p class="bracket-intro">Cada pareja de casillas forma un enfrentamiento. El sorteo avanza de arriba abajo por el Frente A y después por el Frente B.</p>
+        <div class="section-heading"><div><div class="section-overline">EL CAMINO A LA VICTORIA <span>／ FASE 02</span></div><h2 id="bracket-title">OCTAVOS <span>DE FINAL</span></h2></div><span class="heading-accent" aria-hidden="true">✦</span></div>
+        <p class="bracket-intro">Las 16 alianzas ganadoras de la ronda anterior participan en este sorteo. Cada pareja de casillas forma un enfrentamiento. El sorteo avanza de arriba abajo por el Frente A y después por el Frente B.</p>
         <div class="bracket-grid">
-          <div class="bracket-column"><div class="column-heading"><div><span class="column-index">01—08</span><h3>FRENTE A</h3></div><span>PRIMEROS 8 COMBATES</span></div><div id="frontA" class="match-list"></div></div>
-          <div class="bracket-column"><div class="column-heading"><div><span class="column-index">09—16</span><h3>FRENTE B</h3></div><span>ÚLTIMOS 8 COMBATES</span></div><div id="frontB" class="match-list"></div></div>
+          <div class="bracket-column"><div class="column-heading"><div><span class="column-index">01—04</span><h3>FRENTE A</h3></div><span>PRIMEROS 4 COMBATES</span></div><div id="frontA" class="match-list"></div></div>
+          <div class="bracket-column"><div class="column-heading"><div><span class="column-index">05—08</span><h3>FRENTE B</h3></div><span>ÚLTIMOS 4 COMBATES</span></div><div id="frontB" class="match-list"></div></div>
         </div>
       </section>
 
-      <section class="roster-section" aria-labelledby="roster-title"><div><span class="section-overline">ORDEN DE BATALLA / 32 ALIANZAS</span><h2 id="roster-title">Participantes confirmados</h2><p>Las entradas marcadas con “(2)” son cupos independientes y participan por separado.</p></div><details><summary>VER LISTA COMPLETA <span aria-hidden="true">⌄</span></summary><ol id="rosterList"></ol></details></section>
+      <section class="roster-section" aria-labelledby="roster-title"><div><span class="section-overline">ORDEN DE BATALLA / 16 ALIANZAS</span><h2 id="roster-title">Clasificados a octavos</h2><p>Cada participante ganó su combate TAH de la ronda anterior. Los equipos con “2” son cupos independientes.</p></div><details><summary>VER LISTA COMPLETA <span aria-hidden="true">⌄</span></summary><ol id="rosterList"></ol></details></section>
     </main>
 
     <footer class="site-footer"><span>BATALLÓN SUPREMACY <span class="footer-star">✦</span> TORNEO DE ALIANZAS HISPANAS</span><button id="resetButton" type="button">REINICIAR SORTEO</button></footer>
   </div>
-  <button class="floating-draw" id="floatingDrawButton" type="button" aria-label="Revelar siguiente alianza"><span>✦ &nbsp; REVELAR SIGUIENTE ALIANZA</span><strong id="floatingCount">00 / 32</strong></button>
+  <button class="floating-draw" id="floatingDrawButton" type="button" aria-label="Revelar siguiente alianza"><span>✦ &nbsp; REVELAR SIGUIENTE ALIANZA</span><strong id="floatingCount">00 / 16</strong></button>
   <dialog id="resetDialog" class="confirm-dialog"><form method="dialog"><div class="section-overline">NUEVA OPERACIÓN</div><h2>¿Reiniciar el sorteo?</h2><p>Se borrarán las alianzas reveladas en este navegador y podrás comenzar un sorteo nuevo.</p><div class="dialog-actions"><button value="cancel" class="cancel-button">CANCELAR</button><button value="confirm" class="confirm-button">SÍ, REINICIAR</button></div></form></dialog>
 </body>
 </html>
